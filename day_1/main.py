@@ -5,13 +5,18 @@ decrease_count = 0
 
 num_lines = [int(line) for line in lines]
 prev = -1
-for num in num_lines:
+for i, num in enumerate(num_lines):
+    if i > len(num_lines) - 3:
+        break
+
+    window_sum = num + num_lines[i+1] + num_lines[i+2]
+
     if prev != -1:
-        if prev < num:
+        if prev < window_sum:
             increase_count += 1
-        elif prev > num:
+        elif prev > window_sum:
             decrease_count += 1
-    prev = num
+    prev = window_sum
 
 
 print(f'Total lines: {len(num_lines)}')
