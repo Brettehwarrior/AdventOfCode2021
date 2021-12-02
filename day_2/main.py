@@ -8,14 +8,16 @@ for line in lines:
     
 h_pos = 0
 depth = 0
+aim = 0
 
 for command in commands:
     if command[0] == 'forward':
         h_pos += command[1]
+        depth += aim * command[1]
     elif command[0] == 'down':
-        depth += command[1]
+        aim += command[1]
     elif command[0] == 'up':
-        depth -= command[1]
+        aim -= command[1]
         
 
 print(f'Horizontal position: {h_pos}')
