@@ -23,13 +23,14 @@ lines_new = open('day_3/input_ex.txt', 'r').read().splitlines()
 
 # Find er
 for i in range(bit_string_len-1):
+    if len(lines_new) <= 2:
+        break
+    
     totals = update_totals(lines_new)
     if totals[i] > len(lines_new) // 2:
         lines_new = cull_lines(lines_new, '1', i)
-    elif totals[i] < len(lines_new) // 2:
-        lines_new = cull_lines(lines_new, '0', i)
     else:
-        break
+        lines_new = cull_lines(lines_new, '0', i)
 co2_scrubber_rating = int(str(min([int(line) for line in lines_new])), 2)
 
 print(f'Oxygen: {oxygen_generator_rating}')
